@@ -3,18 +3,19 @@ import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import PauseCircleOutlineIcon from '@mui/icons-material/PauseCircleOutline';
 import {Button} from "@mui/material";
 import {useState} from "react";
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { TimePicker } from '@mui/x-date-pickers/TimePicker';
-
+import TimeInput from "./TimeInput.jsx";
+import {useDispatch, useSelector} from "react-redux";
+import {setPlaying} from "../store/TimeSlice.js";
 
 
 function CountdownTimer() {
-    const [isPlaying, setIsPlaying] = useState(false);
+
+    const time = useSelector(state => state.time.time)
+    const dispatch = useDispatch()
+    const isPlayingState = useSelector(state => state.time.isPlaying)
 
     function startTimer() {
-        setIsPlaying(!isPlaying);
+        dispatch(setPlaying(!isPlayingState))
     }
 
     const children = ({remainingTime}) => {
@@ -22,38 +23,43 @@ function CountdownTimer() {
         const minutes = Math.floor((remainingTime % 3600) / 60)
         const seconds = remainingTime % 60
 
-        return `${hours}:${minutes}:${seconds}`
+        return (
+            <div>
+                <div className='text-3xl text-center font-bold'>{10 > hours ? `0${hours}` : hours}</div>
+                <div className='text-3xl text-center font-bold'>{10 > minutes ? `0${minutes}` : minutes}</div>
+                <div className='text-3xl text-center font-bold'>{10 > seconds ? `0${seconds}` : seconds}</div>
+            </div>
+
+        )
     }
 
     return (
         <div className='flex items-center flex-col justify-center align-middle my-4'>
             <div className=''>
                 <CountdownCircleTimer
-                    isPlaying={isPlaying}
-                    duration={100}
+                    isPlaying={isPlayingState}
+                    duration={time * 60}
                     colors={['#004777', '#F7B801', '#A30000', '#A30000']}
                     colorsTime={[7, 5, 2, 0]}
                     size={400}
                     strokeWidth={20}
                     trailStrokeWidth={10}
-
                 >
                     {children}
                 </CountdownCircleTimer>
             </div>
 
-            <div className='mt-5'>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DemoContainer components={['TimePicker']}>
-                        <TimePicker label="Basic time picker" />
-                    </DemoContainer>
-                </LocalizationProvider>
+            <div className='mt-5 flex justify-center align-middle items-center'>
+                <div>
+                    <TimeInput/>
+                </div>
+                <div>
+                    {isPlayingState ? <Button onClick={startTimer} variant="contained" color={'error'}
+                                              startIcon={<PauseCircleOutlineIcon/>}>Durdur</Button> :
+                        <Button onClick={startTimer} variant="contained" color={"success"}
+                                startIcon={<PlayCircleOutlineIcon/>}>Başlat</Button>}
+                </div>
 
-
-                {isPlaying ? <Button onClick={startTimer} variant="contained" color={'error'}
-                                     startIcon={<PauseCircleOutlineIcon/>}>Durdur</Button> :
-                    <Button onClick={startTimer} variant="contained" color={"success"}
-                            startIcon={<PlayCircleOutlineIcon/>}>Başlat</Button>}
 
             </div>
         </div>

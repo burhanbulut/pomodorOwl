@@ -5,11 +5,13 @@ import Footer from "./footer/Footer.jsx";
 
 function MainLayout() {
     return (
+
         <div className='h-screen' >
             <Header/>
             <Outlet/>
             <Footer/>
         </div>
+
     )
 }
 
