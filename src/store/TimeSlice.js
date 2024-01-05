@@ -1,8 +1,9 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
-    time: 45,
+    time: 30,
     isPlaying: false,
+    reamingTime: 0,
 }
 
 export const timeSlice = createSlice({
@@ -14,8 +15,11 @@ export const timeSlice = createSlice({
         },
         setPlaying: (state, action) => {
             state.isPlaying = action.payload;
+        },
+       setRemainingTime: (state, action) => {
+            state.remainingTime = action.payload;
         }
     }
 })
-export const {getTime, setPlaying} = timeSlice.actions
+export const {getTime, setPlaying,setRemainingTime} = timeSlice.actions
 export default timeSlice.reducer
