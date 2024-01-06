@@ -12,7 +12,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import Logo from '../../../assets/logo/logo1copy.png'
 
 
 
@@ -42,7 +42,7 @@ export default function Register() {
                     }}
                 >
                     <Avatar sx={{ m: 1, bgcolor: '' }}>
-                       <img width={175} height={175} src={'src/assets/logo/logo1copy.png'} alt='google logo'/>
+                       <img width={175} height={175} src={Logo} alt='google logo'/>
                     </Avatar>
                     <Typography component="h1" variant="h5">
                        Kayıt ol

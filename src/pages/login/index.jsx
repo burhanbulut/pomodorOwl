@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-
+import Logo from '../../../assets/logo/logo1copy.png'
 function Login() {
     return (
         <>
@@ -8,7 +8,7 @@ function Login() {
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                     <img
                         className="mx-auto h-24 w-auto"
-                        src="src/assets/logo/logo1copy.png"
+                        src={Logo}
                         alt="Your Company"
                     />
                     <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
