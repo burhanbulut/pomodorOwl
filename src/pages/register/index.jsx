@@ -3,18 +3,14 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
+
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Logo from '../../../assets/logo/logo1copy.png'
-
-
+import {createTheme, ThemeProvider} from '@mui/material/styles';
+import Logo from '../../assets/logo/logo1copy.png'
+import {Link} from "react-router-dom";
 
 
 const defaultTheme = createTheme();
@@ -30,9 +26,9 @@ export default function Register() {
     };
 
     return (
-        <ThemeProvider  theme={defaultTheme}>
+        <ThemeProvider theme={defaultTheme}>
             <Container className={'h-full'} component="main" maxWidth="xs">
-                <CssBaseline />
+                <CssBaseline/>
                 <Box
                     sx={{
                         marginTop: 8,
@@ -41,13 +37,13 @@ export default function Register() {
                         alignItems: 'center',
                     }}
                 >
-                    <Avatar sx={{ m: 1, bgcolor: '' }}>
-                       <img width={175} height={175} src={Logo} alt='google logo'/>
+                    <Avatar sx={{m: 1, bgcolor: ''}}>
+                        <img width={175} height={175} src={Logo} alt='google logo'/>
                     </Avatar>
                     <Typography component="h1" variant="h5">
-                       Kayıt ol
+                        Kayıt ol
                     </Typography>
-                    <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+                    <Box component="form" noValidate onSubmit={handleSubmit} sx={{mt: 3}}>
                         <Grid container spacing={2}>
                             <Grid item xs={12} sm={12}>
                                 <TextField
@@ -78,13 +74,13 @@ export default function Register() {
                             type="submit"
                             fullWidth
                             variant="contained"
-                            sx={{ mt: 3, mb: 2 }}
+                            sx={{mt: 3, mb: 2}}
                         >
                             Kayıt Ol
                         </Button>
                         <Grid container justifyContent="flex-end">
                             <Grid item>
-                                <Link href="#" variant="body2">
+                                <Link to={"/login"} >
                                     Zaten hesabın var mı? Giriş yap
                                 </Link>
                             </Grid>
