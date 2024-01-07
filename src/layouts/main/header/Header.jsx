@@ -1,5 +1,5 @@
 import React from 'react'
-import Logo from '../../../assets/logo/logo1copy.png'
+import Logo from '../../../../public/logo1copy.png'
 import {Link} from "react-router-dom";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 const Header = () => {

@@ -9,7 +9,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
-import Logo from '../../assets/logo/logo1copy.png'
+import Logo from '../../../public/logo1copy.png'
 import {Link} from "react-router-dom";
 
 
