@@ -9,21 +9,51 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
-import Logo from '../../../public/logo1copy.png'
+import Logo from '/logo1copy.png'
 import {Link} from "react-router-dom";
+import {useState} from "react";
 
 
 const defaultTheme = createTheme();
 
 export default function Register() {
+    const [formData, setFormData] = useState({
+        username: "",
+        password: ""
+    })
+    const handleChange = (e) =>{
+        const {name, value} = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        })
+
+    }
+
     const handleSubmit = (event) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('username'),
-            password: data.get('password'),
-        });
+        fetch('http://localhost:8080/auth/register', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(formData)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        setFormData({
+            username: "",
+            password: ""
+        })
+        history.go("/register")
     };
+
+
+
 
     return (
         <ThemeProvider theme={defaultTheme}>
@@ -43,8 +73,9 @@ export default function Register() {
                     <Typography component="h1" variant="h5">
                         Kayıt ol
                     </Typography>
-                    <Box component="form" noValidate onSubmit={handleSubmit} sx={{mt: 3}}>
+                    <Box component="form" noValidate  sx={{mt: 3}}>
                         <Grid container spacing={2}>
+
                             <Grid item xs={12} sm={12}>
                                 <TextField
                                     autoComplete="given-name"
@@ -54,6 +85,8 @@ export default function Register() {
                                     id="username"
                                     label="Kullanıcı Adı"
                                     autoFocus
+                                    value={formData.username}
+                                    onInput={handleChange}
                                 />
                             </Grid>
 
@@ -66,6 +99,8 @@ export default function Register() {
                                     type="password"
                                     id="password"
                                     autoComplete="new-password"
+                                    value={formData.password}
+                                    onInput={handleChange}
                                 />
                             </Grid>
 
@@ -75,6 +110,8 @@ export default function Register() {
                             fullWidth
                             variant="contained"
                             sx={{mt: 3, mb: 2}}
+                            onClick={handleSubmit}
+
                         >
                             Kayıt Ol
                         </Button>
