@@ -1,8 +1,9 @@
-import React from 'react';
+import Post from "../../components/Post.jsx";
+
 
 function Profile() {
     return (
-        <div className='flex h-full relative'>
+        <div className='flex h-full '>
             <aside className={'h-full border-2 w-44'}>
                 <ul className={'flex flex-col  h-full'}>
                     <li className={'h-16 w-full border-2 flex justify-center items-center'}>Home</li>
@@ -12,9 +13,9 @@ function Profile() {
                     <li className={'h-16 w-full border-2 flex justify-center items-center'}>Logout</li>
                 </ul>
             </aside>
-            <div>
-                todo
-            </div>
+            <article className={'flex-1'}>
+                <Post  />
+            </article>
 
         </div>
     );

@@ -26,7 +26,7 @@ const routes = createBrowserRouter([
                 element: <Register />
             },
             {
-                path: `profile/${localStorage.getItem("currentUser")}`,
+                path: `profile${localStorage.getItem("currentUser")}`,
                 element: <Profile />
             },
 
