@@ -4,6 +4,7 @@ import Home from "../pages/home/index.jsx";
 import Login from "../pages/login/index.jsx";
 import Register from "../pages/register/index.jsx";
 import Profile from "../pages/profile/Profile.jsx";
+import {Password} from "../pages/password/index.jsx";
 
 
 
@@ -26,8 +27,16 @@ const routes = createBrowserRouter([
                 element: <Register />
             },
             {
-                path: `profile${localStorage.getItem("currentUser")}`,
-                element: <Profile />
+                path: `profile${localStorage.getItem("currentUser")}/`,
+                element: <Profile />,
+                children: [
+
+                    {
+                        path: `password`,
+                        element: <Password />
+                    }
+                ]
+
             },
 
         ]

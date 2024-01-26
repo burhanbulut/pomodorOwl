@@ -17,11 +17,11 @@ export default function Example() {
     }
 
     return (
-        <div className=" text-right">
+        <div className=" text-right  z-20">
             <Menu as="div" className="relative inline-block text-left mx-2">
                 <div>
                     <Menu.Button
-                        className="inline-flex  w-full justify-center rounded-full  px-4 py-2 text-sm font-medium text-white hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
+                        className="inline-flex  w-full justify-center rounded-full bg-baseColorHeader px-4 py-2 text-sm font-medium text-white hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
                             <div className={'flex align-middle  items-center justify-between w-full'}>
                                 <div className={'border-2 rounded-full w-10 h-10 bg-white flex justify-center text-black align-middle text-center items-center text-3xl mx-2'}>
                                     {localStorage.getItem("username").charAt(0).toUpperCase()}
@@ -51,7 +51,7 @@ export default function Example() {
                                 {({active}) => (
                                     <Link to={`/profile${localStorage.getItem("currentUser")}`}
                                         className={`${
-                                            active ? 'bg-violet-500 text-white' : 'text-gray-900'
+                                            active ? 'bg-baseColorHeader text-white' : 'text-gray-900'
                                         } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                                     >
                                         {active ? (
@@ -74,7 +74,7 @@ export default function Example() {
                                     <button
                                         onClick={logoutHandler}
                                         className={` ${
-                                            active ? 'bg-violet-500 text-white' : 'text-gray-900'
+                                            active ? 'bg-baseColorHeader text-white' : 'text-gray-900'
                                         } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                                     >
                                         {active ? (

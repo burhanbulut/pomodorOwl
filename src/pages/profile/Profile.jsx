@@ -1,19 +1,19 @@
 import Post from "../../components/Post.jsx";
+import {Link} from "react-router-dom";
 
 
 function Profile() {
     return (
-        <div className='flex h-full '>
-            <aside className={'h-full border-2 w-44'}>
-                <ul className={'flex flex-col  h-full'}>
-                    <li className={'h-16 w-full border-2 flex justify-center items-center'}>Home</li>
-                    <li className={'h-16 w-full border-2 flex justify-center items-center'}>Profile</li>
-                    <li className={'h-16 w-full border-2 flex justify-center items-center'}>Settings</li>
-                    <li className={'h-16 w-full border-2 flex justify-center items-center'}>About</li>
-                    <li className={'h-16 w-full border-2 flex justify-center items-center'}>Logout</li>
-                </ul>
+        <div className='flex h-full  bg-secondaryColor'>
+            <aside className={'h-full  w-44'}>
+                <Link to={`/profile${localStorage.getItem("currentUser")}/password`} className={''}>
+                    <div className={'border-2 bg-mainColor text-baseColorHeader font-bold mt-4 rounded-full flex items-center h-12 w-full text-center  justify-center align-middle'}>
+                        Şifre Değiştir
+                    </div>
+
+                </Link>
             </aside>
-            <article className={'flex-1'}>
+            <article className={'flex-1  w-full overflow-auto max-h-[800px]'}>
                 <Post  />
             </article>
 

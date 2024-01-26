@@ -5,7 +5,7 @@ import Footer from "./footer/Footer.jsx";
 function MainLayout() {
     return (
 
-        <div className='h-screen' >
+        <div className='h-screen bg-secondaryColor' >
             <Header />
             <Outlet />
             <Footer />
