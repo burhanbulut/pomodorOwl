@@ -4,6 +4,7 @@ import {Fragment} from 'react'
 import {ChevronDownIcon} from '@heroicons/react/20/solid'
 import {Link, useNavigate} from "react-router-dom";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import KeyIcon from '@mui/icons-material/Key';
 import LogoutIcon from '@mui/icons-material/Logout';
 export default function Example() {
     let navigate = useNavigate();
@@ -69,6 +70,30 @@ export default function Example() {
                                     </Link>
                                 )}
                             </Menu.Item>
+                            <Menu.Item>
+                                {({active}) => (
+                                    <Link to={`/profile${localStorage.getItem("currentUser")}/changePassword`}
+                                        className={`${
+                                            active ? 'bg-baseColorHeader text-white' : 'text-gray-900'
+                                        } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                                    >
+                                        {active ? (
+                                            <KeyIcon
+                                                className="mr-2 h-5 w-5"
+                                                aria-hidden="true"
+                                            />
+                                        ) : (
+                                            <KeyIcon
+                                                className="mr-2 h-5 w-5"
+                                                aria-hidden="true"
+                                            />
+                                        )}
+                                        Şifre Değiştir
+                                    </Link>
+                                )}
+                            </Menu.Item>
+                            
+                            
                             <Menu.Item>
                                 {({active}) => (
                                     <button
