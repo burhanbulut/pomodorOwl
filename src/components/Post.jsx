@@ -38,7 +38,7 @@ function Post() {
     }
 
     function getTodos() {
-        fetch(`http://localhost:8080/todos?userId=${localStorage.getItem("currentUser")}`, {
+        fetch(`http://localhost:8080/todos/userTodos/${localStorage.getItem("currentUser")}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

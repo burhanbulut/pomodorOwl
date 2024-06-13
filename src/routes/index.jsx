@@ -5,7 +5,7 @@ import Login from "../pages/login/index.jsx";
 import Register from "../pages/register/index.jsx";
 import Profile from "../pages/profile/Profile.jsx";
 import {Password} from "../pages/password/index.jsx";
-
+import ChangePassword from "../pages/changepassword/ChangePassword.jsx";
 
 
 
@@ -37,6 +37,10 @@ const routes = createBrowserRouter([
                     }
                 ]
 
+            },
+            {
+                path: `profile${localStorage.getItem("currentUser")}/changepassword`,
+                element: <ChangePassword />
             },
 
         ]
